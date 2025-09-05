@@ -1,0 +1,33 @@
+
+{% block header %}
+<h5>Контакты</h5>
+{% endblock header %}
+
+{% block content %}
+<div class="text-start">
+  <h2>Свяжитесь с нами</h2>
+  <ul class="list-unstyled fs-5">
+    <li><strong>Адрес:</strong> г. Москва, ул. Книжная, д.10</li>
+    <li><strong>Телефон:</strong> +7 (495) 123-45-67</li>
+    <li><strong>Email:</strong> info@bookstore.ru</li>
+    <li><strong>Время работы:</strong> Пн-Пт 9:00–18:00</li>
+  </ul>
+
+  <h3 class="mt-4">Форма обратной связи</h3>
+  <form style="max-width: 450px;">
+    <div class="mb-3">
+      <label for="name" class="form-label fw-semibold">Ваше имя</label>
+      <input type="text" id="name" class="form-control" placeholder="Введите имя" />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label fw-semibold">Email</label>
+      <input type="email" id="email" class="form-control" placeholder="Введите email" />
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label fw-semibold">Сообщение</label>
+      <textarea id="message" rows="4" class="form-control" placeholder="Ваше сообщение"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+  </form>
+</div>
+{% endblock %}

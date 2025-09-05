@@ -1,29 +1,21 @@
 {% extends "catalog/base.html" %}
+{% block content %}
+<div class="text-start">
+  <div class="mb-3">
+    <p><strong>Имя и фамилия автора:</strong> {{author.first_name}} {{author.last_name}}</p>
+  </div>
 
-{% block content  %}
+  <div class="mb-3 d-flex align-items-center gap-3">
+    <img src="{{author.photo.url}}" alt="Фотография автора" style="max-height: 200px; border-radius: 10px; box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);" />
+    <a href="{{author.photo.url}}" class="btn btn-primary" target="_blank" style="height: 38px; align-self: flex-start;">Показать</a>
+  </div>
 
+  <div class="mb-3">
+    <p><strong>Дата рождения:</strong> {{author.date_of_birth}}</p>
+  </div>
 
-<div class="container text-start">
-    <div class="row my-2">
-        <p>Имя и фамилия автора - "{{author.first_name}} {{author.last_name}}"</p>
-    </div>
-    
-    <img src="{{author.photo.url}}" alt="con" style="max-height: 200px;">
-    <a href="{{author.photo.url}}" class="btn btn-primary" target="_blank">Показать</a>
-
-     <div class="row my-2" >
-        <div class="col">
-            <p>Дата рождения: {{author.date_of_birth}}</p>
-        </div>
-     </div>   
-     <div class="row my-2">
-        <div class="col mx-2 bg-primary text-white">
-            <p>
-                Сведения об авторе: {{author.about}}
-            </p>
-        </div>
-       
-     </div>
-     
+  <div class="author-about mb-3">
+    <p><strong>Сведения об авторе:</strong> {{author.about}}</p>
+  </div>
 </div>
-{% endblock %} 
+{% endblock %}

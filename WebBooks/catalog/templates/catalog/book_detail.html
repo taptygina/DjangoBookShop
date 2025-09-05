@@ -1,56 +1,39 @@
 {% extends "catalog/base.html" %}
+{% block content %}
+<div class="text-start">
+  <div class="mb-3">
+    <h1>{{book.title}}</h1>
+  </div>
 
-{% block content  %}
+  <div class="mb-3">
+    <p><strong>Автор:</strong></p>
+    {% for author in book.author.all %}
+      <a href="">{{author.first_name}} {{author.last_name}}</a>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+  </div>
 
+  <div class="mb-3 d-flex align-items-center gap-3">
+    <img src="{{book.photo.url}}" alt="Обложка книги" style="max-height: 200px; border-radius: 10px; box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);" />
+    <a href="{{book.photo.url}}" class="btn btn-primary" target="_blank" style="height: 38px; align-self: flex-start;">Показать</a>
+  </div>
 
-<div class="container text-start">
-    <div class="row my-2">
-        <h1>Название книги - "{{book.title}}"</h1>
-    </div>
-    <div class="row my-2">
-        <p>Автор:</p>
-        {%for author in book.author.all%}
-        <a href="">
-            {{author.first_name}}
-            {{author.last_name}}
-        </a>
-        {%endfor%}
-    </div>
-    <img src="{{book.photo.url}}" alt="con" style="max-height: 200px;">
-    <a href="{{book.photo.url}}" class="btn btn-primary" target="_blank">Показать</a>
-     <div class="row my-2" >
-        <div class="col">
-            <p>Аннотация: {{book.summary}}</p>
-        </div>
-     </div>   
-     <div class="row my-2">
-        <div class="col mx-2 bg-primary text-white">
-            <p>
-                Жанр: {{book.genre}}
-            </p>
-        </div>
-        <div class="col mx-2 bg-primary text-white">
-            <p>
-                ISBN: {{book.isbn}}
-            </p>
-        </div>
-        <div class="col mx-2 bg-primary text-white">
-            <p>
-                Язык: {{book.language}}
-            </p>
-        </div>
-        <div class="col mx-2 bg-primary text-white">
-            <p>
-                Издательство: {{book.publisher}}
-            </p>
-        </div>
-     </div>
-     <div style="margin-left: 20px; margin-top: 10px; ">
-        <h4>Количество экземпляров книг</h4>
-        {% for copy in book.bookinstance_set.all %}
-        <p class="text-muted">Инвентарный номер: {{copy.id}}</p>
-        <p class="text-success">Статус экземпляра книги: {{copy.status}}</p>
-        {% endfor %}
-     </div>
+  <div class="mb-3">
+    <p><strong>Аннотация:</strong> {{book.summary}}</p>
+  </div>
+
+  <div class="d-flex flex-wrap gap-3 mb-4">
+    <div class="info-box flex-fill">Жанр: {{book.genre}}</div>
+    <div class="info-box flex-fill">ISBN: {{book.isbn}}</div>
+    <div class="info-box flex-fill">Язык: {{book.language}}</div>
+    <div class="info-box flex-fill">Издательство: {{book.publisher}}</div>
+  </div>
+
+  <div style="margin-left: 20px; margin-top: 10px;">
+    <h4>Количество экземпляров книг</h4>
+    {% for copy in book.bookinstance_set.all %}
+      <p class="text-muted book-copy-status">Инвентарный номер: {{copy.id}}</p>
+      <p class="text-success book-copy-status">Статус экземпляра книги: {{copy.status}}</p>
+    {% endfor %}
+  </div>
 </div>
-{% endblock %} 
+{% endblock %}

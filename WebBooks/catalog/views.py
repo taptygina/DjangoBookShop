@@ -38,3 +38,12 @@ class AuthorListView(ListView):
 class AuthorDetailView(DetailView):
     model=Author
     context_object_name='author'
+
+
+
+def about(request):
+    return render(request, 'catalog/about.html')
+
+
+def contacts(request):
+    return render(request, 'catalog/contacts.html')
