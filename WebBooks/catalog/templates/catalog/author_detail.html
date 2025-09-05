@@ -1,0 +1,29 @@
+{% extends "catalog/base.html" %}
+
+{% block content  %}
+
+
+<div class="container text-start">
+    <div class="row my-2">
+        <p>Имя и фамилия автора - "{{author.first_name}} {{author.last_name}}"</p>
+    </div>
+    
+    <img src="{{author.photo.url}}" alt="con" style="max-height: 200px;">
+    <a href="{{author.photo.url}}" class="btn btn-primary" target="_blank">Показать</a>
+
+     <div class="row my-2" >
+        <div class="col">
+            <p>Дата рождения: {{author.date_of_birth}}</p>
+        </div>
+     </div>   
+     <div class="row my-2">
+        <div class="col mx-2 bg-primary text-white">
+            <p>
+                Сведения об авторе: {{author.about}}
+            </p>
+        </div>
+       
+     </div>
+     
+</div>
+{% endblock %} 
